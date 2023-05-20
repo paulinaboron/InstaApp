@@ -1,0 +1,44 @@
+package com.example.insta.viewModel;
+
+import android.util.Log;
+
+import androidx.lifecycle.ViewModel;
+
+import com.example.insta.model.User;
+import com.example.insta.service.RetrofitService;
+import com.example.insta.view.RegisterFragment;
+
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
+public class UserViewModel extends ViewModel {
+    public String TAG = "xxx";
+    public UserViewModel() {
+    }
+
+    public void register(User user){
+        Call<String> call = RetrofitService.getUserInterface().register(user);
+        call.enqueue(new Callback<String>() {
+            @Override
+            public void onResponse(Call<String> call, Response<String> response) {
+                if (!response.isSuccessful()) {
+                    Log.d("xxx", String.valueOf(response.code()));
+                }
+                else
+                {
+                    String body = response.body();
+                    Log.d("xxx", "onResponse: " + body);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<String> call, Throwable t) {
+                Log.d(TAG, "onFailure: error " + t);
+                t.getMessage();
+            }
+        });
+    }
+}

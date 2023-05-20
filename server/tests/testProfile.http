@@ -1,0 +1,25 @@
+### GET profile
+GET http://localhost:3000/api/profile HTTP/1.1
+authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im5hbWVAZW1haWwucGwiLCJpYXQiOjE2ODQxMzEzMjAsImV4cCI6MTY4NDEzMTM1MH0.I3vCak8GCeMKDAeo0qyMMhDobdB1CddNbF6IyAycYpg
+
+### PATCH update profile data
+PATCH http://localhost:3000/api/profile HTTP/1.1
+authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im5hbWVAZW1haWwucGwiLCJpYXQiOjE2ODQxMzE2MzgsImV4cCI6MTY4NDEzMTY2OH0.8gi0Cw-1IqyAZz8W29pX5mBl7nZolsgNJKq7-N-fC5o
+
+{    
+   "name": "name2",
+   "lastname": "lastName2",
+}
+
+### POST profile picture
+POST http://localhost:3000/api/profile HTTP/1.1
+authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im5hbWVAZW1haWwucGwiLCJpYXQiOjE2ODQxMzMwODQsImV4cCI6MTY4NDEzMzExNH0.nGVAovPUIgvNJ9WW-GgW5cESew2MTo_rzxXGSaIM7HU
+Content-Type: multipart/form-data; boundary=----FormBoundary1234
+
+------FormBoundary1234
+Content-Disposition: form-data; name="file"; filename="paint.jpg"
+Content-Type: image/jpeg
+
+< ../paint.jpg
+
+------FormBoundary1234

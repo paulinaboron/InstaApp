@@ -1,0 +1,23 @@
+### POST REGISTER USER
+POST http://localhost:3000/api/users/register HTTP/1.1
+
+{    
+   "name": "name",
+   "lastname": "lastName",
+   "email":"name@email.pl",
+   "pass":"password"
+}
+
+### POST LOGIN USER
+POST http://localhost:3000/api/users/login HTTP/1.1
+
+{    
+   "email":"name@email.pl",
+   "pass":"password"
+}
+
+### GET CONFIRM USER
+GET http://localhost:3000/api/users/confirm/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im5hbWVAZW1haWwucGwiLCJpYXQiOjE2ODQxMzAzMDUsImV4cCI6MTY4NDEzMDMzNX0.nyjN5t_yV-QxMfzg6sBJC_TkMPcXQxUFoANQRP_RyQM HTTP/1.1
+
+### GET ALL USERS
+GET http://localhost:3000/api/users HTTP/1.1

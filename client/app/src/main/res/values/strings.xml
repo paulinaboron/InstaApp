@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Insta</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="sign_in">Sign in</string>
+    <string name="dont">Don\'t have an account? Sing up</string>
+    <string name="register">Register</string>
+    <string name="lastname">Lastname</string>
+    <string name="name">Name</string>
+    <string name="sign_up">Sign up</string>
+    <string name="already_have_an_account_sign_in">Already have an account? Sign in</string>
+    <string name="aaa">Already have an account? Sing in</string>
+</resources>
