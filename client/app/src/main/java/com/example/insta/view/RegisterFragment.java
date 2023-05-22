@@ -9,12 +9,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
-import com.example.insta.R;
-import com.example.insta.databinding.FragmentLoginBinding;
 import com.example.insta.databinding.FragmentRegisterBinding;
-import com.example.insta.helpers.Token;
 import com.example.insta.model.User;
 import com.example.insta.viewModel.UserViewModel;
 

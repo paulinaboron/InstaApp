@@ -3,64 +3,58 @@ package com.example.insta.view;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 
 import com.example.insta.R;
+import com.example.insta.databinding.FragmentGalleryBinding;
+import com.example.insta.helpers.Adapter;
+import com.example.insta.viewModel.ProfileViewModel;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link GalleryFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+import java.util.ArrayList;
+import java.util.Arrays;
+
 public class GalleryFragment extends Fragment {
-
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
-    public GalleryFragment() {
-        // Required empty public constructor
-    }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment GalleryFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static GalleryFragment newInstance(String param1, String param2) {
-        GalleryFragment fragment = new GalleryFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
-    }
+    private String TAG = "xxx";
+    private FragmentGalleryBinding binding;
+    private ProfileViewModel profileViewModel;
+    private String token;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_gallery, container, false);
+        binding = FragmentGalleryBinding.inflate(getLayoutInflater());
+
+        getParentFragmentManager()
+                .setFragmentResultListener("datafromactivity", this, (s, bundle) -> {
+                    token = bundle.getString("token");
+                    profileViewModel.getProfile(token);
+                });
+
+        profileViewModel = new ViewModelProvider(this).get(ProfileViewModel.class);
+        profileViewModel.setupPerson();
+        profileViewModel.getObservedProfile().observe(getViewLifecycleOwner(), s ->{
+            binding.setProfile(profileViewModel);
+        });
+
+        ArrayList images = new ArrayList<>(Arrays.asList(
+                R.drawable.ic_launcher_background,
+                R.drawable.ic_launcher_background,
+                R.drawable.ic_launcher_foreground
+                ));
+
+        StaggeredGridLayoutManager manager = new StaggeredGridLayoutManager(2, LinearLayout.VERTICAL);
+        binding.recyclerView.setLayoutManager(manager);
+        Adapter adapter = new Adapter(images, GalleryFragment.this);
+        binding.recyclerView.setAdapter(adapter);
+
+
+        return binding.getRoot();
     }
 }

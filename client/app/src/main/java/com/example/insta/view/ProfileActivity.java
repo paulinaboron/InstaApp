@@ -1,28 +1,28 @@
 package com.example.insta.view;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelProvider;
 
 import android.os.Bundle;
 import android.util.Log;
 
 import com.example.insta.R;
 import com.example.insta.databinding.ActivityProfileBinding;
+import com.example.insta.viewModel.ProfileViewModel;
 
 public class ProfileActivity extends AppCompatActivity {
     private ActivityProfileBinding binding;
     private String TAG = "xxx";
-    private String token;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getSupportActionBar().hide(); //hide the title bar
+        getSupportActionBar().hide();
 
         binding = ActivityProfileBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
         Bundle bundle = getIntent().getExtras();
-        Log.d(TAG, "onCreate: " + bundle.getString("token"));
-        token = bundle.getString("token");
+        getSupportFragmentManager().setFragmentResult("datafromactivity", bundle);
     }
 }

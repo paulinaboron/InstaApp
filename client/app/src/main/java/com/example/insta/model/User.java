@@ -20,6 +20,45 @@ public class User {
         this.pass = pass;
     }
 
+    public User() {
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public void setPass(String pass) {
+        this.pass = pass;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getLastname() {
+        return lastname;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public String getPass() {
+        return pass;
+    }
+
+    public boolean isConfirmed() {
+        return confirmed;
+    }
+
     @Override
     public String toString() {
         return "User{" +

@@ -14,20 +14,19 @@ import com.example.insta.viewModel.UserViewModel;
 public class MainActivity extends AppCompatActivity {
 
     ActivityMainBinding binding;
-    boolean b = true;
+    boolean b = false;
     private UserViewModel userViewModel;
     public String token;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        requestWindowFeature(Window.FEATURE_NO_TITLE);//will hide the title
         getSupportActionBar().hide(); //hide the title bar
 
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        replaceFragment(new RegisterFragment());
+        replaceFragment(new LoginFragment());
 
         binding.btnReplace.setOnClickListener(v->{
             if (b) {

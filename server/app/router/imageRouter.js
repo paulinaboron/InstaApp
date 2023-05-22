@@ -12,6 +12,10 @@ const router = async (req, res) => {
 
         output = jsonController.getAll()
 
+    }else if(req.url == "/api/photos/album" && req.method == "POST"){
+        let data = await utils.getRequestData(req);
+        output = jsonController.getFromAlbum(JSON.parse(data))
+
     } else if (req.url == "/api/photos" && req.method == "POST") {
 
         let [album, fileName, path] = await fileController.addFile(req);

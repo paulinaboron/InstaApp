@@ -9,6 +9,13 @@ module.exports = {
     getAll: () => {
         return photosArray
     },
+    getFromAlbum: (data)=>{
+        console.log(data.album);
+        let photos = photosArray.filter(function(e) {
+            return e.album = data.album
+        })
+        return photos
+    },
     getOne: (id) =>{
         for(let i=0; i<photosArray.length; i++){
             if(photosArray[i].id == id) return photosArray[i]

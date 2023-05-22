@@ -1,4 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <data>
+        <variable
+            name="profile"
+            type="com.example.insta.viewModel.ProfileViewModel" />
+    </data>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -44,14 +50,14 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Name"
+                android:text="@{profile.observedProfile.name}"
                 android:padding="10dp"
                 android:textColor="@color/black"
                 android:textSize="20dp"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Lastname"
+                android:text="@{profile.observedProfile.lastname}"
                 android:padding="10dp"
                 android:textColor="@color/black"
                 android:textSize="20dp"/>
@@ -59,13 +65,16 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="email@gmail.com"
+            android:text="@{profile.observedProfile.email}"
             android:textAlignment="center"
-            android:textColor="@color/gray"/>
+            android:textColor="@color/gray"
+            android:paddingBottom="20dp"/>
 
         <androidx.recyclerview.widget.RecyclerView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+            android:layout_height="match_parent"
+            android:id="@+id/recyclerView"/>
     </LinearLayout>
 
 </FrameLayout>
+</layout>

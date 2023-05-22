@@ -5,13 +5,10 @@ import android.widget.Toast;
 
 import androidx.lifecycle.ViewModel;
 
-import com.example.insta.helpers.Token;
 import com.example.insta.model.User;
 import com.example.insta.service.RetrofitService;
 import com.example.insta.view.LoginFragment;
 import com.example.insta.view.RegisterFragment;
-
-import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -40,8 +37,7 @@ public class UserViewModel extends ViewModel {
 
             @Override
             public void onFailure(Call<String> call, Throwable t) {
-                Log.d(TAG, "onFailure: error " + t);
-                t.getMessage();
+                Log.d(TAG, "onFailure: error " + t.getMessage());
             }
         });
     }

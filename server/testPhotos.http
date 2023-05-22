@@ -4,13 +4,20 @@ POST http://localhost:3000/api/photos HTTP/1.1
 content-type: application/json
 
 {    
-  "album": "album113",
+  "album": "Email",
   "originalName": "name"
 }
 
 ### GET - pobierz wszystkie dane
 GET http://localhost:3000/api/photos HTTP/1.1
 
+
+### POST - pobierz pliki z albumu
+POST http://localhost:3000/api/photos/album HTTP/1.1
+
+{
+  "album": "Email"
+}
 
 ### GET - pobierz jeden element wg id
 GET http://localhost:3000/api/photos/1681889596656 HTTP/1.1
@@ -40,7 +47,7 @@ Content-Type: image/jpeg
 Content-Disposition: form-data; name="album"
 Content-Type: text/plain
 
-album
+Email
 ------FormBoundary1234
 
 
