@@ -14,7 +14,7 @@ import com.example.insta.viewModel.UserViewModel;
 public class MainActivity extends AppCompatActivity {
 
     ActivityMainBinding binding;
-    boolean b = false;
+    boolean b = true;
     private UserViewModel userViewModel;
     public String token;
 

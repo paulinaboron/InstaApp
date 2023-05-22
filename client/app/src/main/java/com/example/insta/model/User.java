@@ -15,6 +15,11 @@ public class User {
         this.confirmed = false;
     }
 
+    public User(String email, String pass) {
+        this.email = email;
+        this.pass = pass;
+    }
+
     @Override
     public String toString() {
         return "User{" +

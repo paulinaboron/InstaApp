@@ -14,9 +14,8 @@ const profilesRouter = async (req, res) => {
 
             let decoded = await utils.verifyToken(token)
             if(decoded.email){
-                let user = profilesController.getProfileByEmail(decoded.email)
-                output = {"name": user.name, "lastname": user.lastname, "email": user.email}
-            }
+                output = profilesController.getProfileByEmail(decoded.email)
+            }else output = null
          }
     }
     else if (req.url == "/api/profile" && req.method == "PATCH") {

@@ -2,6 +2,7 @@ package com.example.insta.api;
 
 import com.example.insta.model.User;
 
+import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
@@ -15,4 +16,7 @@ public interface UserInterface {
 
     @GET("/api/users/confirm/{token}")
     Call<String> confirm(@Path("token") String token);
+
+    @POST("/api/users/login")
+    Call<String> login(@Body User user);
 }

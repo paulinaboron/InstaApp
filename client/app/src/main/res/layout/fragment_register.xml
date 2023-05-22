@@ -18,7 +18,7 @@
             android:textSize="40sp"
             android:paddingTop="70dp"
             android:textColor="@color/white"
-            android:background="@drawable/rounded_shape"/>
+            android:background="@drawable/rounded_bottom_black"/>
 
 
         <LinearLayout
@@ -30,22 +30,26 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/etName"
-                android:text="@string/name"/>
+                android:text="@string/name"
+/>
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/etLastname"
-                android:text="@string/lastname"/>
+                android:text="@string/lastname"
+                android:layout_marginTop="20dp"/>
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/etEmail"
-                android:text="@string/email"/>
+                android:text="@string/email"
+                android:layout_marginTop="20dp"/>
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/etPass"
-                android:text="@string/password"/>
+                android:text="@string/password"
+                android:layout_marginTop="20dp"/>
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -53,13 +57,16 @@
                 android:id="@+id/btnSignUp"
                 android:background="@drawable/rounded_btn"
                 android:backgroundTint="@color/black"
+                android:textColor="@color/white"
                 android:textAllCaps="false"
+                android:layout_marginTop="20dp"
                 />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/tvConfirm"/>
+                android:id="@+id/tvConfirm"
+                android:textColor="@color/black"/>
         </LinearLayout>
     </LinearLayout>
 

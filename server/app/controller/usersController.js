@@ -32,7 +32,7 @@ module.exports = {
     },
 
     loginUser: async (data) => {
-        console.log(data);
+        console.log("data login json:", data);
         for(let i=0; i<usersArray.length; i++){
             let decrypted = await utils.decryptPass(data.pass, usersArray[i].pass)
             console.log(decrypted);

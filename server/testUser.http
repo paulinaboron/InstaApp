@@ -3,9 +3,9 @@ POST http://localhost:3000/api/users/register HTTP/1.1
 
 {    
    "name": "name",
-   "lastName": "lastName",
+   "lastname": "lastName",
    "email":"name@email.pl",
-   "password":"password"
+   "pass":"password"
 }
 
 ### POST LOGIN USER
@@ -13,11 +13,11 @@ POST http://localhost:3000/api/users/login HTTP/1.1
 
 {    
    "email":"name@email.pl",
-   "password":"password"
+   "pass":"password"
 }
 
 ### GET CONFIRM USER
-GET http://localhost:3000/api/users/confirm/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im5hbWVAZW1haWwucGwiLCJpYXQiOjE2ODM3MDc4NTcsImV4cCI6MTY4MzcwNzg4N30.aicnLIIhFZQt4vQRH-CsMguGb4dKYAKha8rZkl-d-Hk HTTP/1.1
+GET http://localhost:3000/api/users/confirm/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im5hbWVAZW1haWwucGwiLCJpYXQiOjE2ODQ3NTg3OTUsImV4cCI6MTY4NDc1ODgyNX0.geFJyfSA54HfP260-joFQso7qQ93SnwPjaD5Gigt9hc HTTP/1.1
 
 ### GET ALL USERS
 GET http://localhost:3000/api/users HTTP/1.1

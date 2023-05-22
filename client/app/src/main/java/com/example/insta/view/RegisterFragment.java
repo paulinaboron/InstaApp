@@ -9,10 +9,12 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.example.insta.R;
 import com.example.insta.databinding.FragmentLoginBinding;
 import com.example.insta.databinding.FragmentRegisterBinding;
+import com.example.insta.helpers.Token;
 import com.example.insta.model.User;
 import com.example.insta.viewModel.UserViewModel;
 
@@ -45,11 +47,16 @@ public class RegisterFragment extends Fragment {
         User user = new User(name, lastname, email, pass);
         Log.d(TAG, user.toString());
 
-        userViewModel.register(user);
+        userViewModel.register(user, this);
     }
 
     public void displayToken(String token){
-        binding.tvConfirm.setText(token);
+        String confirmLink = "http://192.168.1.20:3000/api/users/confirm/" + token;
+        binding.tvConfirm.setText(confirmLink);
+
+        binding.tvConfirm.setOnClickListener(v->{
+            userViewModel.confirm(token, this);
+        });
     }
 
 }

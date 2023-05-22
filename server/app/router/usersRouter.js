@@ -25,13 +25,15 @@ const usersRouter = async (req, res) => {
     }
     else if (req.url == "/api/users/login" && req.method == "POST") {
         let data = await utils.getRequestData(req);
-        console.log(data);
+        console.log("data login: ", data);
         let loggedUser = await usersController.loginUser(JSON.parse(data))
         if(loggedUser){
             let token = await utils.createToken(loggedUser)
-            output = {"status": "logged in", "token": token}
+            output = token
         }else output = "błędne dane"
+    console.log("OUTPUT LOGIN:", output);
     }
+
     else if (req.url == "/api/users" && req.method == "GET") {
         output = usersController.getAll()
     }
