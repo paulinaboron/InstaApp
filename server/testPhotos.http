@@ -56,7 +56,7 @@ PATCH  http://localhost:3000/api/photos/tags HTTP/1.1
 content-type: application/json
 
 {
-  "id": 1683708174016,
+  "id": 1684861476618,
   "tags": [
     {
       "name": "#nowytagdlazdjęcia",
@@ -74,4 +74,6 @@ content-type: application/json
 GET http://localhost:3000/api/photos/tags/1683708174016 HTTP/1.1
 
 ### GET photo file
-GET http://localhost:3000/api/photos/getfile/1683708174016 HTTP/1.1
+GET http://localhost:3000/api/photos/getfile/1684856309475 HTTP/1.1
+
+

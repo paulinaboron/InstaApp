@@ -67,8 +67,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/tvConfirm"
-                android:textColor="@color/black"
-                android:autoLink="web"/>
+                android:textColor="@color/black" />
         </LinearLayout>
     </LinearLayout>
 </FrameLayout>

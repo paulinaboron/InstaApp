@@ -14,22 +14,20 @@ module.exports = {
 
     uploadProfilePicture: async (req, email) => {
         var form = new formidable.IncomingForm();
-        const uploadFolder = __dirname + "/../../uploads/"
+        const uploadFolder = __dirname + "/../../profilePics/"
         form.uploadDir = uploadFolder
         return new Promise(
             (resolve, reject) => {
                 form.parse(req, (err, fields, files) => {
                     if (err) reject(err);
                     const file = files.file;
-                    const album = email
-                    const albumDirPath = __dirname + "/../../uploads/" + album;
-                    const newPath = albumDirPath + "/profile.jpg"
-                    console.log(newPath);
+                    const path = form.uploadDir + "/" + email + ".jpg";
+                    console.log(path);
                     console.log(file.name);
                     console.log(file.name.split(".").pop());
 
-                    fs.mkdir(albumDirPath, (err) => {
-                        fs.rename(file.path, newPath, (err) => {
+                    fs.mkdir(form.uploadDir, (err) => {
+                        fs.rename(file.path, path, (err) => {
                             if (err) reject(String(err))
                             resolve("przesłano zdjęcie profilowe")
                         })
@@ -37,5 +35,18 @@ module.exports = {
 
                 })
             })
+    },
+
+    getProfilePicture: async (email) => {
+        const path = __dirname + "/../../profilePics/" + email + ".jpg";
+        console.log(path);
+        return new Promise(
+            (resolve, reject) => {
+                fs.readFile(path, (err, data) => {
+                    if (err) reject(err)
+                    resolve(data)
+                })
+            }
+        )
     }
 }

@@ -57,7 +57,7 @@ module.exports = {
             },
             process.env.YAHOO_PASS,
             {
-                expiresIn: "30s" // "1m", "1d", "24h"
+                expiresIn: "1d" // "1m", "1d", "24h"
             }
         );
         return token

@@ -35,13 +35,15 @@ public class GalleryFragment extends Fragment {
                 .setFragmentResultListener("datafromactivity", this, (s, bundle) -> {
                     token = bundle.getString("token");
                     profileViewModel.getProfile(token);
+                    profileViewModel.getProfilePicture(token);
                 });
 
         profileViewModel = new ViewModelProvider(this).get(ProfileViewModel.class);
-        profileViewModel.setupPerson();
+        profileViewModel.setupProfile();
         profileViewModel.getObservedProfile().observe(getViewLifecycleOwner(), s ->{
             binding.setProfile(profileViewModel);
         });
+
 
         ArrayList images = new ArrayList<>(Arrays.asList(
                 R.drawable.ic_launcher_background,
@@ -54,6 +56,7 @@ public class GalleryFragment extends Fragment {
         Adapter adapter = new Adapter(images, GalleryFragment.this);
         binding.recyclerView.setAdapter(adapter);
 
+        binding.ivProfilePic.setImageBitmap(profileViewModel.getObservedProfile().getValue().getProfilePicture());
 
         return binding.getRoot();
     }

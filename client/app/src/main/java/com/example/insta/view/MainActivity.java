@@ -14,7 +14,7 @@ import com.example.insta.viewModel.UserViewModel;
 public class MainActivity extends AppCompatActivity {
 
     ActivityMainBinding binding;
-    boolean b = false;
+    boolean b = true;
     private UserViewModel userViewModel;
     public String token;
 
@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        replaceFragment(new LoginFragment());
+        replaceFragment(new RegisterFragment());
 
         binding.btnReplace.setOnClickListener(v->{
             if (b) {

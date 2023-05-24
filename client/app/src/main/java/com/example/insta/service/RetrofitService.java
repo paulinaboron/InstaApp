@@ -1,5 +1,6 @@
 package com.example.insta.service;
 
+import com.example.insta.api.PhotosInterface;
 import com.example.insta.api.ProfileInterface;
 import com.example.insta.api.UserInterface;
 
@@ -19,5 +20,9 @@ public class RetrofitService {
 
     public static ProfileInterface getProfileInterface(){
         return retrofit.create(ProfileInterface.class);
+    }
+
+    public static PhotosInterface getPhotosInterface(){
+        return retrofit.create(PhotosInterface.class);
     }
 }

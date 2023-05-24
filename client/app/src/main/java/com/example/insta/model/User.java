@@ -1,11 +1,14 @@
 package com.example.insta.model;
 
+import android.graphics.Bitmap;
+
 public class User {
     private String name;
     private String lastname;
     private String email;
     private String pass;
     private boolean confirmed;
+    private Bitmap profilePicture;
 
     public User(String name, String lastname, String email, String pass) {
         this.name = name;
@@ -57,6 +60,14 @@ public class User {
 
     public boolean isConfirmed() {
         return confirmed;
+    }
+
+    public void setProfilePicture(Bitmap profilePicture) {
+        this.profilePicture = profilePicture;
+    }
+
+    public Bitmap getProfilePicture() {
+        return profilePicture;
     }
 
     @Override
