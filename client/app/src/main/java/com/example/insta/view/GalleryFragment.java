@@ -12,18 +12,23 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
+import com.bumptech.glide.Glide;
 import com.example.insta.R;
 import com.example.insta.databinding.FragmentGalleryBinding;
 import com.example.insta.helpers.Adapter;
+import com.example.insta.model.Photo;
+import com.example.insta.viewModel.PhotosViewModel;
 import com.example.insta.viewModel.ProfileViewModel;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 public class GalleryFragment extends Fragment {
     private String TAG = "xxx";
     private FragmentGalleryBinding binding;
     private ProfileViewModel profileViewModel;
+    private PhotosViewModel photosViewModel;
     private String token;
 
     @Override
@@ -31,32 +36,37 @@ public class GalleryFragment extends Fragment {
                              Bundle savedInstanceState) {
         binding = FragmentGalleryBinding.inflate(getLayoutInflater());
 
-        getParentFragmentManager()
-                .setFragmentResultListener("datafromactivity", this, (s, bundle) -> {
-                    token = bundle.getString("token");
-                    profileViewModel.getProfile(token);
-                    profileViewModel.getProfilePicture(token);
-                });
-
         profileViewModel = new ViewModelProvider(this).get(ProfileViewModel.class);
         profileViewModel.setupProfile();
         profileViewModel.getObservedProfile().observe(getViewLifecycleOwner(), s ->{
             binding.setProfile(profileViewModel);
         });
 
-
-        ArrayList images = new ArrayList<>(Arrays.asList(
-                R.drawable.ic_launcher_background,
-                R.drawable.ic_launcher_background,
-                R.drawable.ic_launcher_foreground
-                ));
+        photosViewModel = new ViewModelProvider(this).get(PhotosViewModel.class);
+        photosViewModel.setupPhotos();
 
         StaggeredGridLayoutManager manager = new StaggeredGridLayoutManager(2, LinearLayout.VERTICAL);
         binding.recyclerView.setLayoutManager(manager);
-        Adapter adapter = new Adapter(images, GalleryFragment.this);
-        binding.recyclerView.setAdapter(adapter);
 
-        binding.ivProfilePic.setImageBitmap(profileViewModel.getObservedProfile().getValue().getProfilePicture());
+
+        getParentFragmentManager()
+                .setFragmentResultListener("datafromactivity", this, (s, bundle) -> {
+                    token = bundle.getString("token");
+                    profileViewModel.getProfile(token);
+                    profileViewModel.getProfilePicture(token);
+
+                    photosViewModel.getPhotos("Email");
+                    List<Photo> images = photosViewModel.getObservedPhotos().getValue();
+                    Adapter adapter = new Adapter(photosViewModel.getObservedPhotos().getValue(), GalleryFragment.this);
+                    binding.recyclerView.setAdapter(adapter);
+                });
+
+//        todo
+//        center crop w profilowym
+//        binding.ivProfilePic.setImageBitmap(profileViewModel.getObservedProfile().getValue().getProfilePicture());
+        Glide.with(binding.ivProfilePic.getContext())
+                .load("http://192.168.119.103:3000/api/photos/getfile/1685015290911")
+                .into(binding.ivProfilePic);
 
         return binding.getRoot();
     }

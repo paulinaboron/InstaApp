@@ -5,7 +5,6 @@ import android.util.Log;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-import com.example.insta.helpers.Album;
 import com.example.insta.model.Photo;
 import com.example.insta.service.RetrofitService;
 
@@ -30,8 +29,8 @@ public class PhotosViewModel extends ViewModel {
     }
 
     public void getPhotos(String email){
-        Album album = new Album(email);
-        Call<List<Photo>> call = RetrofitService.getPhotosInterface().getPhotos(album);
+        Log.d(TAG, "getPhotos: email " + email);
+        Call<List<Photo>> call = RetrofitService.getPhotosInterface().getPhotos(email);
         call.enqueue(new Callback<List<Photo>>() {
             @Override
             public void onResponse(Call<List<Photo>> call, Response<List<Photo>> response) {
@@ -43,6 +42,7 @@ public class PhotosViewModel extends ViewModel {
                     photos = response.body();
                     Log.d(TAG, "onResponse: " + photos.size());
                     photosLiveData.setValue(photos);
+                    Log.d(TAG, "onResponse: " + photos.toString());
                 }
             }
 

@@ -12,6 +12,10 @@ content-type: application/json
 GET http://localhost:3000/api/photos HTTP/1.1
 
 
+### GET - pobierz pliki z albumu
+GET http://localhost:3000/api/photos/album/Email HTTP/1.1
+
+
 ### GET - pobierz jeden element wg id
 GET http://localhost:3000/api/photos/1681889596656 HTTP/1.1
 
@@ -40,7 +44,7 @@ Content-Type: image/jpeg
 Content-Disposition: form-data; name="album"
 Content-Type: text/plain
 
-album
+Email
 ------FormBoundary1234
 
 
@@ -67,4 +71,4 @@ content-type: application/json
 GET http://localhost:3000/api/photos/tags/1683708174016 HTTP/1.1
 
 ### GET photo file
-GET http://localhost:3000/api/photos/getfile/1683708174016 HTTP/1.1
+GET http://localhost:3000/api/photos/getfile/1685015290911 HTTP/1.1

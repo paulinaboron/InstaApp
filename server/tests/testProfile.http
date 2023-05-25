@@ -23,3 +23,12 @@ Content-Type: image/jpeg
 < ../paint.jpg
 
 ------FormBoundary1234
+
+### GET profile pic
+GET http://localhost:3000/api/profile/picture HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im5hbWVAZW1haWwucGwiLCJpYXQiOjE2ODQ4NTg1OTMsImV4cCI6MTY4NDk0NDk5M30.AwnIa2ZEcOWSDhIcB-CwpB_h_8IL8zTnkTckLtdgWR8
+
+
+### GET logout
+GET http://localhost:3000/api/logout HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im5hbWVAZW1haWwucGwiLCJpYXQiOjE2ODQ4NTc4MTgsImV4cCI6MTY4NDk0NDIxOH0.xCOKGbGevTdh5YGK3MVtWlkTKsx-fKno8BwGvL_Ay_k

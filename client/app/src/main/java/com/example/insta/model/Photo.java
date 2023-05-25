@@ -6,7 +6,7 @@ import com.example.insta.helpers.Tag;
 import java.util.List;
 
 public class Photo {
-    private int id;
+    private long id;
     private String album;
     private String originalName;
     private String url;
@@ -15,6 +15,14 @@ public class Photo {
     private List<HistoryItem> history;
 
     public Photo() {
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public long getId() {
+        return id;
     }
 
     @Override
@@ -29,4 +37,6 @@ public class Photo {
                 ", history=" + history +
                 '}';
     }
+
+
 }

@@ -1,5 +1,6 @@
 package com.example.insta.helpers;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,17 +10,20 @@ import android.widget.ImageView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.example.insta.R;
+import com.example.insta.model.Photo;
 import com.example.insta.view.GalleryFragment;
 
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder>{
-    private List<Integer> list;
+    private List<Photo> photos;
+    private String TAG = "xxx";
 
-    public Adapter(List<Integer> list, GalleryFragment fragment) {
-        this.list = list;
+    public Adapter(List<Photo> photos, GalleryFragment fragment) {
+        this.photos = photos;
     }
 
     @NonNull
@@ -32,14 +36,20 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder>{
 
     @Override
     public void onBindViewHolder(@NonNull Adapter.ViewHolder holder, int position) {
-        int res = (int) list.get(position);
-        holder.image.setImageResource(res);
+        Photo photo = photos.get(position);
+
+//        todo
+        Glide.with(holder.image.getContext())
+                .load("http://192.168.119.103:3000/api/photos/getfile/" + photo.getId())
+                .into(holder.image);
+
+        Log.d(TAG, "onBindViewHolder: glide");
     }
 
 
     @Override
     public int getItemCount() {
-        return list.size();
+        return photos.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {

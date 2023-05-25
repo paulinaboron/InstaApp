@@ -9,10 +9,10 @@ module.exports = {
     getAll: () => {
         return photosArray
     },
-    getFromAlbum: (data)=>{
-        console.log(data.album);
+    getFromAlbum: (album)=>{
+        console.log(album);
         let photos = photosArray.filter(function(e) {
-            return e.album = data.album
+            return e.album = album
         })
         return photos
     },

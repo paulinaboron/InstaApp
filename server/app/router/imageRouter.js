@@ -12,9 +12,11 @@ const router = async (req, res) => {
 
         output = jsonController.getAll()
 
-    }else if(req.url == "/api/photos/album" && req.method == "POST"){
-        let data = await utils.getRequestData(req);
-        output = jsonController.getFromAlbum(JSON.parse(data))
+    }else if(req.url.match(/\/api\/photos\/album\/(...)/) && req.method == "GET"){
+        console.log("EEEEEEEEEEEEEEEEEEEEEEEEEmail");
+        let email = utils.getIdFromUrl(req)
+        console.log(email);
+        output = jsonController.getFromAlbum(email)
 
     } else if (req.url == "/api/photos" && req.method == "POST") {
 
