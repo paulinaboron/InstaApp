@@ -28,29 +28,7 @@ public class PhotosViewModel extends ViewModel {
         this.photosLiveData.setValue(this.photos);
     }
 
-    public void getPhotos(String email){
-        Log.d(TAG, "getPhotos: email " + email);
-        Call<List<Photo>> call = RetrofitService.getPhotosInterface().getPhotos(email);
-        call.enqueue(new Callback<List<Photo>>() {
-            @Override
-            public void onResponse(Call<List<Photo>> call, Response<List<Photo>> response) {
-                if (!response.isSuccessful()) {
-                    Log.d(TAG, String.valueOf(response.code()));
-                }
-                else
-                {
-                    photos = response.body();
-                    Log.d(TAG, "onResponse: " + photos.size());
-                    photosLiveData.setValue(photos);
-                    Log.d(TAG, "onResponse: " + photos.toString());
-                }
-            }
-
-            @Override
-            public void onFailure(Call<List<Photo>> call, Throwable t) {
-                Log.d(TAG, "onFailure: " + t.getMessage());
-            }
-        });
-    }
 
 }
+
+

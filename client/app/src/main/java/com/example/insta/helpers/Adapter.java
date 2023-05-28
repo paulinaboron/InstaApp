@@ -22,13 +22,15 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder>{
     private List<Photo> photos;
     private String TAG = "xxx";
 
-    public Adapter(List<Photo> photos, GalleryFragment fragment) {
+    public Adapter(List<Photo> photos) {
         this.photos = photos;
+        Log.d(TAG, "Adapter: constructor");
     }
 
     @NonNull
     @Override
     public Adapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        Log.d(TAG, "onCreateViewHolder: adapter 2");
         View v = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.photo_item, parent, false);
         return new ViewHolder(v);
@@ -36,6 +38,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder>{
 
     @Override
     public void onBindViewHolder(@NonNull Adapter.ViewHolder holder, int position) {
+        Log.d(TAG, "onBindViewHolder: adapter 3");
         Photo photo = photos.get(position);
 
 //        todo
@@ -49,6 +52,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder>{
 
     @Override
     public int getItemCount() {
+        Log.d(TAG, "getItemCount: " + photos.size());
         return photos.size();
     }
 

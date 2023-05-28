@@ -1,5 +1,6 @@
 const utils = require("../utils")
 const profilesController = require("../controller/profilesController")
+const jsonController = require("../controller/jsonController")
 
 let tokenBlacklist = []
 
@@ -54,6 +55,11 @@ const profilesRouter = async (req, res) => {
             res.end(img)
             return;
         }
+    }
+    else if(req.url.match(/\/api\/profile\/album\/(...)/) && req.method == "GET"){
+        let email = utils.getIdFromUrl(req)
+        output = jsonController.getFromAlbum(email)
+
     }
     else if (req.url == "/api/profile/logout" && req.method == "GET") {
         if (req.headers.authorization && req.headers.authorization.startsWith("Bearer")) {

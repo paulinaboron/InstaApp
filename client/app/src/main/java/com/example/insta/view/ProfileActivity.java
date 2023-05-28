@@ -1,6 +1,8 @@
 package com.example.insta.view;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.GravityCompat;
+import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.os.Bundle;
@@ -24,5 +26,27 @@ public class ProfileActivity extends AppCompatActivity {
 
         Bundle bundle = getIntent().getExtras();
         getSupportFragmentManager().setFragmentResult("datafromactivity", bundle);
+
+        binding.bottomNavigation.setOnItemSelectedListener(v -> {
+            switch (v.getItemId()) {
+
+                case R.id.itemEdit:
+                    replaceFragment(new EditFragment());
+                    break;
+                case R.id.itemProfile:
+                    replaceFragment(new GalleryFragment());
+            }
+            return true;
+        });
+
+
     }
+
+    void replaceFragment(Fragment fragment){
+        getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.frameLayout, fragment)
+                .commit();
+    }
+
 }

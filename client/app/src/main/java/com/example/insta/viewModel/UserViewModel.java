@@ -60,7 +60,7 @@ public class UserViewModel extends ViewModel {
 
             @Override
             public void onFailure(Call<String> call, Throwable t) {
-
+                Log.d(TAG, "onFailure: " + t.getMessage());
             }
         });
     }

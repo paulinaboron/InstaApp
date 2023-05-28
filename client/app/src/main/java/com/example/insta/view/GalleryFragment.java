@@ -4,6 +4,7 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
 import android.util.Log;
@@ -28,7 +29,6 @@ public class GalleryFragment extends Fragment {
     private String TAG = "xxx";
     private FragmentGalleryBinding binding;
     private ProfileViewModel profileViewModel;
-    private PhotosViewModel photosViewModel;
     private String token;
 
     @Override
@@ -36,14 +36,11 @@ public class GalleryFragment extends Fragment {
                              Bundle savedInstanceState) {
         binding = FragmentGalleryBinding.inflate(getLayoutInflater());
 
-        profileViewModel = new ViewModelProvider(this).get(ProfileViewModel.class);
-        profileViewModel.setupProfile();
+        profileViewModel = new ViewModelProvider(requireActivity()).get(ProfileViewModel.class);
+        profileViewModel.setup();
         profileViewModel.getObservedProfile().observe(getViewLifecycleOwner(), s ->{
             binding.setProfile(profileViewModel);
         });
-
-        photosViewModel = new ViewModelProvider(this).get(PhotosViewModel.class);
-        photosViewModel.setupPhotos();
 
         StaggeredGridLayoutManager manager = new StaggeredGridLayoutManager(2, LinearLayout.VERTICAL);
         binding.recyclerView.setLayoutManager(manager);
@@ -52,19 +49,10 @@ public class GalleryFragment extends Fragment {
         getParentFragmentManager()
                 .setFragmentResultListener("datafromactivity", this, (s, bundle) -> {
                     token = bundle.getString("token");
-                    profileViewModel.getProfile(token);
-                    profileViewModel.getProfilePicture(token);
-
-                    photosViewModel.getPhotos("Email");
-                    List<Photo> images = photosViewModel.getObservedPhotos().getValue();
-                    Adapter adapter = new Adapter(photosViewModel.getObservedPhotos().getValue(), GalleryFragment.this);
-                    binding.recyclerView.setAdapter(adapter);
+                    profileViewModel.setToken(token);
+                    profileViewModel.getProfile(token, binding.recyclerView);
+                    profileViewModel.getProfilePicture(binding.ivProfilePic);
                 });
-
-//        todo
-        Glide.with(binding.ivProfilePic.getContext())
-                .load("http://192.168.1.20:3000/api/photos/getfileURL/uploads/Email/upload_01d8fc45610db498920f5121201dd20d.jpg")
-                .into(binding.ivProfilePic);
 
         return binding.getRoot();
     }
