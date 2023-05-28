@@ -47,7 +47,7 @@ public class RegisterFragment extends Fragment {
     }
 
     public void displayToken(String token){
-        String confirmLink = "http://192.168.119.103:3000/api/users/confirm/" + token; //192.168.119.103  192.168.1.20
+        String confirmLink = "http://192.168.1.20:3000/api/users/confirm/" + token; //192.168.119.103  192.168.1.20
         binding.tvConfirm.setText(confirmLink);
 
         binding.tvConfirm.setOnClickListener(v->{

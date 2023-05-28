@@ -62,10 +62,8 @@ public class GalleryFragment extends Fragment {
                 });
 
 //        todo
-//        center crop w profilowym
-//        binding.ivProfilePic.setImageBitmap(profileViewModel.getObservedProfile().getValue().getProfilePicture());
         Glide.with(binding.ivProfilePic.getContext())
-                .load("http://192.168.119.103:3000/api/photos/getfile/1685015290911")
+                .load("http://192.168.1.20:3000/api/photos/getfileURL/uploads/Email/upload_01d8fc45610db498920f5121201dd20d.jpg")
                 .into(binding.ivProfilePic);
 
         return binding.getRoot();

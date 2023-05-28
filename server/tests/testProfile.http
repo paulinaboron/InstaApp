@@ -13,7 +13,7 @@ authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im5hbWVAZ
 
 ### POST profile picture
 POST http://localhost:3000/api/profile HTTP/1.1
-authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im5hbWVAZW1haWwucGwiLCJpYXQiOjE2ODQxMzMwODQsImV4cCI6MTY4NDEzMzExNH0.nGVAovPUIgvNJ9WW-GgW5cESew2MTo_rzxXGSaIM7HU
+authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6IkVtYWlsIiwiaWF0IjoxNjg1MjgyMjU1LCJleHAiOjE2ODUzNjg2NTV9.wxK5r670nTSlr_fgRcFzvrwTN26jURgEi9xPzCl1mDc
 Content-Type: multipart/form-data; boundary=----FormBoundary1234
 
 ------FormBoundary1234

@@ -72,3 +72,6 @@ GET http://localhost:3000/api/photos/tags/1683708174016 HTTP/1.1
 
 ### GET photo file
 GET http://localhost:3000/api/photos/getfile/1685015290911 HTTP/1.1
+
+### GET photo file from url
+GET http://localhost:3000/api/photos/getfileURL/uploads/Email/upload_01d8fc45610db498920f5121201dd20d.jpg HTTP/1.1

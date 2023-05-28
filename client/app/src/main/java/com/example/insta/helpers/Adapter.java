@@ -40,7 +40,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder>{
 
 //        todo
         Glide.with(holder.image.getContext())
-                .load("http://192.168.119.103:3000/api/photos/getfile/" + photo.getId())
+                .load("http://192.168.1.20:3000/api/photos/getfile/" + photo.getId())
                 .into(holder.image);
 
         Log.d(TAG, "onBindViewHolder: glide");

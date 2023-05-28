@@ -6,22 +6,20 @@ module.exports = {
 
   addFile: async (req) => {
     var form = new formidable.IncomingForm();
-    const uploadFolder = __dirname + "/../../uploads/"
-    form.uploadDir = uploadFolder
     return new Promise(
       (resolve, reject) => {
         form.parse(req, (err, fields, files) => {
           if (err) reject(err);
           const file = files.file;
           const album = fields.album;
-          const albumDirPath = __dirname + "/../../uploads/" + album + "/";
+          const albumDirPath = __dirname + "/../../uploads/" + album;
           const newPath = albumDirPath + "/" + file.path.split("\\").pop() + "." + file.name.split(".").pop();
           console.log(newPath);
 
           fs.mkdir(albumDirPath, (err) => {
             fs.rename(file.path, newPath, (err) => {
               if (err) reject(String(err))
-              resolve([album, file.name, newPath])
+              resolve([album, file.name, newPath.split("/../../")[1]])
             })
           })
 
@@ -47,5 +45,14 @@ module.exports = {
         resolve(data)
       })
     })
-  }
+  },
+  getFileFromURL: (url) => {
+    return new Promise((resolve, reject) => {
+      fs.readFile(url, (err, data) => {
+        if (err) reject(err)
+        resolve(data)
+      })
+    })
+  },
+
 }
