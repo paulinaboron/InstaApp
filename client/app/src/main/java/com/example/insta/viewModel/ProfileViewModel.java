@@ -15,6 +15,7 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.model.GlideUrl;
 import com.bumptech.glide.load.model.LazyHeaders;
 import com.example.insta.helpers.Adapter;
+import com.example.insta.helpers.Utils;
 import com.example.insta.model.Photo;
 import com.example.insta.model.User;
 import com.example.insta.service.RetrofitService;
@@ -61,11 +62,12 @@ public class ProfileViewModel extends ViewModel {
         call.enqueue(new Callback<User>() {
             @Override
             public void onResponse(Call<User> call, Response<User> response) {
-                if (!response.isSuccessful()) {
+                if (!response.isSuccessful() || response.body() == null)  {
                     Log.d(TAG, String.valueOf(response.code()));
                 }
                 else
                 {
+                    Log.d(TAG, "onResponse: " + response.body());
                     user = response.body();
                     Log.d("xxx", "onResponse: " + user.toString());
                     profileLiveData.setValue(user);
@@ -111,7 +113,7 @@ public class ProfileViewModel extends ViewModel {
 
     public void getProfilePicture(ImageView ivProfilePic){
 
-        String url = "http://192.168.1.20:3000/api/profile/picture";
+        String url = Utils.adres + "/api/profile/picture";
 
         GlideUrl glideUrl = new GlideUrl(url,
                 new LazyHeaders.Builder()

@@ -43,7 +43,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder>{
 
 //        todo
         Glide.with(holder.image.getContext())
-                .load("http://192.168.1.20:3000/api/photos/getfile/" + photo.getId())
+                .load(Utils.adres+"/api/photos/getfile/" + photo.getId())
                 .into(holder.image);
 
         Log.d(TAG, "onBindViewHolder: glide");
@@ -67,6 +67,11 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder>{
             image.setScaleType(ImageView.ScaleType.CENTER_CROP);
             int height = ThreadLocalRandom.current().nextInt(250, 600);
             image.setLayoutParams(new FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, height));
+            
+            image.setOnClickListener(v->{
+                Log.d(TAG, "ViewHolder: click");
+            });
+            
         }
     }
 }

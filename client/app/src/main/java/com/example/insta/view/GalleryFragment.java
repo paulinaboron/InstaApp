@@ -56,4 +56,14 @@ public class GalleryFragment extends Fragment {
 
         return binding.getRoot();
     }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        Log.d(TAG, "onResume: ");
+
+        profileViewModel.getProfile(token, binding.recyclerView);
+        profileViewModel.getProfilePicture(binding.ivProfilePic);
+    }
+
 }

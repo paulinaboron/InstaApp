@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.insta.databinding.FragmentRegisterBinding;
+import com.example.insta.helpers.Utils;
 import com.example.insta.model.User;
 import com.example.insta.viewModel.UserViewModel;
 
@@ -47,7 +48,7 @@ public class RegisterFragment extends Fragment {
     }
 
     public void displayToken(String token){
-        String confirmLink = "http://192.168.1.20:3000/api/users/confirm/" + token; //192.168.119.103  192.168.1.20
+        String confirmLink =  Utils.adres + "/api/users/confirm/" + token;
         binding.tvConfirm.setText(confirmLink);
 
         binding.tvConfirm.setOnClickListener(v->{
