@@ -8,6 +8,7 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
@@ -18,6 +19,7 @@ import com.example.insta.model.Photo;
 import com.example.insta.view.GalleryFragment;
 import com.example.insta.view.PhotoFragment;
 import com.example.insta.view.ProfileActivity;
+import com.example.insta.viewModel.ProfileViewModel;
 
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
@@ -45,12 +47,20 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder>{
         Log.d(TAG, "onBindViewHolder: adapter 3");
         Photo photo = photos.get(position);
 
-//        todo
         Glide.with(holder.image.getContext())
                 .load(Utils.adres+"/api/photos/getfile/" + photo.getId())
+//                .signature(new ObjectKey(String.valueOf(System.currentTimeMillis())))
                 .into(holder.image);
 
         Log.d(TAG, "onBindViewHolder: glide");
+
+        holder.image.setOnClickListener(v->{
+            Log.d(TAG, "ViewHolder: click");
+            AppCompatActivity activity = (AppCompatActivity) v.getContext();
+            PhotoFragment photoFragment = new PhotoFragment();
+            ProfileViewModel.selectedPhoto = photo;
+            activity.getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout, photoFragment).addToBackStack(null).commit();
+        });
     }
 
 
@@ -72,10 +82,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder>{
             int height = ThreadLocalRandom.current().nextInt(250, 600);
             image.setLayoutParams(new FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, height));
             
-            image.setOnClickListener(v->{
-                Log.d(TAG, "ViewHolder: click");
-//                ProfileActivity.replaceFragment(new PhotoFragment());
-            });
+
             
         }
     }

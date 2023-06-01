@@ -40,6 +40,7 @@ public class ProfileViewModel extends ViewModel {
     private MutableLiveData<User> profileLiveData = new MutableLiveData<>();
     private List<Photo> photos = new ArrayList<>();
     private MutableLiveData<List<Photo>> photosLiveData = new MutableLiveData<>();
+    public static Photo selectedPhoto;
 
     public MutableLiveData<User> getObservedProfile(){
         return profileLiveData;
@@ -64,12 +65,13 @@ public class ProfileViewModel extends ViewModel {
     }
 
     public void getProfile(String token, RecyclerView recyclerView){
+        Log.d(TAG, "getProfile: token " + token);
         Call<User> call = RetrofitService.getProfileInterface().getProfile("Bearer " + token);
         call.enqueue(new Callback<User>() {
             @Override
             public void onResponse(Call<User> call, Response<User> response) {
                 if (!response.isSuccessful() || response.body() == null)  {
-                    Log.d(TAG, String.valueOf(response.code()));
+                    Log.d(TAG, "not successful " + response.code());
                 }
                 else
                 {

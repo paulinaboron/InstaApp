@@ -11,5 +11,8 @@
         android:icon="@android:drawable/ic_menu_edit"
         android:iconTint="@color/black"
         android:title="Edit" />
-    <item android:title="Item" />
+    <item
+        android:id="@+id/itemCamera"
+        android:icon="@android:drawable/ic_menu_camera"
+        android:title="Camera" />
 </menu>

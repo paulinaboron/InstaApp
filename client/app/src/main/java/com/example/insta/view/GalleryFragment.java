@@ -62,7 +62,7 @@ public class GalleryFragment extends Fragment {
         super.onResume();
         Log.d(TAG, "onResume: ");
 
-        profileViewModel.getProfile(token, binding.recyclerView);
+        profileViewModel.getProfile(profileViewModel.getToken(), binding.recyclerView);
         profileViewModel.getProfilePicture(binding.ivProfilePic);
     }
 
