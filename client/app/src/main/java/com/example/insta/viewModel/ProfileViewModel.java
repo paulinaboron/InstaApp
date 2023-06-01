@@ -1,5 +1,6 @@
 package com.example.insta.viewModel;
 
+import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.util.Log;
@@ -14,15 +15,20 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.model.GlideUrl;
 import com.bumptech.glide.load.model.LazyHeaders;
+import com.bumptech.glide.signature.ObjectKey;
 import com.example.insta.helpers.Adapter;
 import com.example.insta.helpers.Utils;
 import com.example.insta.model.Photo;
 import com.example.insta.model.User;
 import com.example.insta.service.RetrofitService;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
+import okhttp3.MediaType;
+import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -114,7 +120,6 @@ public class ProfileViewModel extends ViewModel {
     public void getProfilePicture(ImageView ivProfilePic){
 
         String url = Utils.adres + "/api/profile/picture";
-
         GlideUrl glideUrl = new GlideUrl(url,
                 new LazyHeaders.Builder()
                         .addHeader("Authorization", "Bearer " + token)
@@ -122,6 +127,7 @@ public class ProfileViewModel extends ViewModel {
 
         Glide.with(ivProfilePic.getContext())
                 .load(glideUrl)
+                .signature(new ObjectKey(String.valueOf(System.currentTimeMillis())))
                 .into(ivProfilePic);
     }
 
@@ -141,6 +147,32 @@ public class ProfileViewModel extends ViewModel {
                     user.setLastname(newUser.getLastname());
                     profileLiveData.setValue(user);
                     Toast.makeText(fragment.getContext(),body,Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<String> call, Throwable t) {
+                Log.d(TAG, "onFailure: " + t.getMessage());
+            }
+        });
+    }
+
+    public void postProfilePic(File file, Context context){
+        RequestBody fileRequest = RequestBody.create(MediaType.parse("multipart/form-data"), file);
+        MultipartBody.Part body = MultipartBody.Part.createFormData("file", file.getName(), fileRequest);
+        Call<String> call = RetrofitService.getProfileInterface().postProfilePic("Bearer " + token, body);
+        call.enqueue(new Callback<String>() {
+            @Override
+            public void onResponse(Call<String> call, Response<String> response) {
+                Log.d(TAG, "onResponse: " + response.body());
+                if (!response.isSuccessful()) {
+                    Log.d(TAG, String.valueOf(response.code()));
+                }
+                else
+                {
+                    String body = response.body();
+                    Log.d(TAG, "onResponse: " + body);
+                    Toast.makeText(context, body, Toast.LENGTH_SHORT).show();
                 }
             }
 

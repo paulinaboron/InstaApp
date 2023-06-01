@@ -47,7 +47,7 @@ public class ProfileActivity extends AppCompatActivity {
         checkPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE, 100);
     }
 
-    void replaceFragment(Fragment fragment){
+    public void replaceFragment(Fragment fragment){
         getSupportFragmentManager()
                 .beginTransaction()
                 .replace(R.id.frameLayout, fragment)

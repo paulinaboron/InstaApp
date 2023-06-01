@@ -28,6 +28,7 @@ import com.example.insta.R;
 import com.example.insta.databinding.FragmentEditBinding;
 import com.example.insta.databinding.FragmentGalleryBinding;
 import com.example.insta.databinding.FragmentLoginBinding;
+import com.example.insta.helpers.Utils;
 import com.example.insta.model.User;
 import com.example.insta.viewModel.ProfileViewModel;
 
@@ -89,9 +90,15 @@ public class EditFragment extends Fragment {
         super.onActivityResult(requestCode, resultCode, data);
         if(resultCode == RESULT_OK)
             if (requestCode == 100) {
-                Uri selectedImage = data.getData();
+                Uri selectedImageUri = data.getData();
+                String picturePath = Utils.getPath( getActivity( ).getApplicationContext( ), selectedImageUri );
+                Log.d(TAG, "Picture Path " + picturePath);
+                File file = new File(picturePath);
+//                File file = new File(data.toURI());
+//                Log.d(TAG, "onActivityResult: " + file.getPath());
+                profileViewModel.postProfilePic(file, getContext());
                 try {
-                    Bitmap bitmap = MediaStore.Images.Media.getBitmap(getActivity().getContentResolver(), selectedImage);
+                    Bitmap bitmap = MediaStore.Images.Media.getBitmap(getActivity().getContentResolver(), selectedImageUri);
                     binding.profilePic.setImageBitmap(bitmap);
                 } catch (IOException e) {
                     Log.i(TAG, "Some exception " + e);
