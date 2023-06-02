@@ -34,7 +34,7 @@
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:src="@color/gray"
+                android:src="@drawable/profile_pic"
                 android:id="@+id/ivProfilePic"
                 android:scaleType="centerCrop"/>
             </androidx.cardview.widget.CardView>

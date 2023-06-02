@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.Manifest;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.util.Log;
@@ -40,6 +41,9 @@ public class ProfileActivity extends AppCompatActivity {
                     break;
                 case R.id.itemProfile:
                     replaceFragment(new GalleryFragment());
+                case R.id.itemCamera:
+                    Intent intent = new Intent(ProfileActivity.this, PostActivity.class);
+                    startActivity(intent);
             }
             return true;
         });
