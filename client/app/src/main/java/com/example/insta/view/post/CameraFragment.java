@@ -1,4 +1,4 @@
-package com.example.insta.view;
+package com.example.insta.view.post;
 
 import android.annotation.SuppressLint;
 import android.content.ContentValues;
@@ -26,6 +26,7 @@ import android.widget.Toast;
 import com.example.insta.R;
 import com.example.insta.databinding.FragmentCameraBinding;
 import com.example.insta.helpers.PhotoTakingUtils;
+import com.example.insta.helpers.Utils;
 import com.google.common.util.concurrent.ListenableFuture;
 
 import java.io.File;
@@ -53,14 +54,14 @@ public class CameraFragment extends Fragment {
 
         binding = FragmentCameraBinding.inflate(getLayoutInflater());
 
-        if (!checkIfPermissionsGranted()) {
+        if (!Utils.checkIfPermissionsGranted(REQUIRED_PERMISSIONS, getContext())) {
             requestPermissions(REQUIRED_PERMISSIONS, PERMISSIONS_REQUEST_CODE);
         } else {
             startCamera();
         }
 
         binding.ivPicture.setOnClickListener(v->{
-            PhotoTakingUtils.takePhoto(getContext(), imageCapture);
+            PhotoTakingUtils.takePhoto(getContext(), imageCapture, CameraFragment.this);
         });
 
         binding.btnRed.setVisibility(View.GONE);
@@ -78,17 +79,9 @@ public class CameraFragment extends Fragment {
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        if(checkIfPermissionsGranted()) startCamera();
+        if(Utils.checkIfPermissionsGranted(REQUIRED_PERMISSIONS, getContext())) startCamera();
     }
 
-    private boolean checkIfPermissionsGranted() {
-        for (String permission : REQUIRED_PERMISSIONS) {
-            if (ContextCompat.checkSelfPermission(getContext(), permission) != PackageManager.PERMISSION_GRANTED) {
-                return false;
-            }
-        }
-        return true;
-    }
 
     private void startCamera(){
         cameraProviderFuture = ProcessCameraProvider.getInstance(getContext());

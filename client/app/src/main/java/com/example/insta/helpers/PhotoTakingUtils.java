@@ -7,11 +7,11 @@ import android.content.pm.PackageManager;
 import android.os.Environment;
 import android.provider.MediaStore;
 import android.util.Log;
-import android.view.View;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.camera.core.ImageCapture;
 import androidx.camera.core.ImageCaptureException;
 import androidx.camera.core.VideoCapture;
@@ -19,7 +19,9 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
 import com.example.insta.R;
-import com.example.insta.databinding.FragmentCameraBinding;
+import com.example.insta.view.post.CameraFragment;
+import com.example.insta.view.post.TagsFragment;
+import com.example.insta.viewModel.PostViewModel;
 
 import java.io.File;
 
@@ -27,7 +29,7 @@ public class PhotoTakingUtils {
 
     private static String TAG = "xxx";
 
-    public static void takePhoto(Context context, ImageCapture imageCapture){
+    public static void takePhoto(Context context, ImageCapture imageCapture, CameraFragment cameraFragment){
         File dir = new File(context.getExternalFilesDir(Environment.DIRECTORY_PICTURES), "InstaPosts");
         boolean isDirectoryCreated = dir.exists() || dir.mkdirs();
 
@@ -43,6 +45,10 @@ public class PhotoTakingUtils {
                         public void onImageSaved(@NonNull ImageCapture.OutputFileResults outputFileResults) {
                             Toast.makeText(context, "Photo taken", Toast.LENGTH_SHORT).show();
                             Log.d(TAG, outputFileOptions.toString());
+
+                            AppCompatActivity activity = (AppCompatActivity) context;
+                            PostViewModel.photoFile = file;
+                            activity.getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout, new TagsFragment()).addToBackStack(null).commit();
                         }
 
                         @Override

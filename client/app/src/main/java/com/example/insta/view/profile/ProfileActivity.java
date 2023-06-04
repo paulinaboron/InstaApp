@@ -1,22 +1,20 @@
-package com.example.insta.view;
+package com.example.insta.view.profile;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
-import androidx.core.view.GravityCompat;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProvider;
 
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.Toast;
 
 import com.example.insta.R;
 import com.example.insta.databinding.ActivityProfileBinding;
-import com.example.insta.viewModel.ProfileViewModel;
+import com.example.insta.helpers.Utils;
+import com.example.insta.view.post.PostActivity;
 
 public class ProfileActivity extends AppCompatActivity {
     private ActivityProfileBinding binding;
@@ -48,7 +46,7 @@ public class ProfileActivity extends AppCompatActivity {
             return true;
         });
 
-        checkPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE, 100);
+        Utils.checkPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE, 100, ProfileActivity.this, ProfileActivity.this);
     }
 
     public void replaceFragment(Fragment fragment){
@@ -58,13 +56,6 @@ public class ProfileActivity extends AppCompatActivity {
                 .commit();
     }
 
-    public void checkPermission(String permission, int requestCode) {
-        // jeśli nie jest przyznane to zażądaj
-        if (ContextCompat.checkSelfPermission(ProfileActivity.this, permission) == PackageManager.PERMISSION_DENIED) {
-            ActivityCompat.requestPermissions(ProfileActivity.this, new String[]{permission}, requestCode);
-        } else {
-            Toast.makeText(ProfileActivity.this, "Permission already granted", Toast.LENGTH_SHORT).show();
-        }
-    }
+
 
 }

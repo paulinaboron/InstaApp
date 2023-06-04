@@ -12,13 +12,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.engine.DiskCacheStrategy;
-import com.bumptech.glide.signature.ObjectKey;
 import com.example.insta.R;
 import com.example.insta.model.Photo;
-import com.example.insta.view.GalleryFragment;
-import com.example.insta.view.PhotoFragment;
-import com.example.insta.view.ProfileActivity;
+import com.example.insta.view.profile.PhotoFragment;
 import com.example.insta.viewModel.ProfileViewModel;
 
 import java.util.List;

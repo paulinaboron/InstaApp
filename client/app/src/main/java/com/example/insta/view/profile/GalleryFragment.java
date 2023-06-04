@@ -1,10 +1,9 @@
-package com.example.insta.view;
+package com.example.insta.view.profile;
 
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
 import android.util.Log;
@@ -13,17 +12,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
-import com.bumptech.glide.Glide;
-import com.example.insta.R;
 import com.example.insta.databinding.FragmentGalleryBinding;
-import com.example.insta.helpers.Adapter;
-import com.example.insta.model.Photo;
-import com.example.insta.viewModel.PhotosViewModel;
 import com.example.insta.viewModel.ProfileViewModel;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
 public class GalleryFragment extends Fragment {
     private String TAG = "xxx";

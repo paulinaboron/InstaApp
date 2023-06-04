@@ -1,8 +1,6 @@
 class Tag{
-    constructor(name, popularity){
-        this.id = tagsObjects.length
+    constructor(name){
         this.name = name
-        this.popularity = popularity
     }
 }
 
@@ -42,7 +40,7 @@ let tagsArray = [
 let tagsObjects = []
 
 tagsArray.forEach(e=>{
-    let tag = new Tag(e, Math.floor(Math.random()*1000))
+    let tag = new Tag(e)
     tagsObjects.push(tag)
 })
 

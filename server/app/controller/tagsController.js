@@ -20,7 +20,7 @@ module.exports = {
         data = JSON.parse(data)
         if(tagsArray.includes(data.name)) return "already exists"
 
-        let newTag = new Tag(data.name, data.popularity)
+        let newTag = new Tag(data.name)
         tagsArray.push(data.name)
         tagsObjects.push(newTag)
         return "new tag added"

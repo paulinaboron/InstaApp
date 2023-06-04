@@ -1,46 +1,28 @@
-package com.example.insta.view;
+package com.example.insta.view.profile;
 
 import static android.app.Activity.RESULT_OK;
 
-import android.app.AlertDialog;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 
-import androidx.annotation.Nullable;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
-import android.os.Environment;
 import android.provider.MediaStore;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
-import com.example.insta.R;
 import com.example.insta.databinding.FragmentEditBinding;
-import com.example.insta.databinding.FragmentGalleryBinding;
-import com.example.insta.databinding.FragmentLoginBinding;
 import com.example.insta.helpers.Utils;
 import com.example.insta.model.User;
 import com.example.insta.viewModel.ProfileViewModel;
 
-import java.io.ByteArrayOutputStream;
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
-import java.text.SimpleDateFormat;
-import java.util.Arrays;
-import java.util.Date;
 
 
 public class EditFragment extends Fragment {

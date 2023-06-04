@@ -1,8 +1,5 @@
 package com.example.insta.model;
 
-import com.example.insta.helpers.HistoryItem;
-import com.example.insta.helpers.Tag;
-
 import java.util.List;
 
 public class Photo {
@@ -13,6 +10,7 @@ public class Photo {
     private String lastChange;
     private List<Tag> tags;
     private List<HistoryItem> history;
+    private String address;
 
     public Photo() {
     }
@@ -35,8 +33,7 @@ public class Photo {
                 ", lastChange='" + lastChange + '\'' +
                 ", tags=" + tags +
                 ", history=" + history +
+                ", address='" + address + '\'' +
                 '}';
     }
-
-
 }

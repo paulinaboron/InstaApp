@@ -1,4 +1,4 @@
-package com.example.insta.view;
+package com.example.insta.view.login;
 
 import android.os.Bundle;
 

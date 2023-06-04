@@ -1,11 +1,9 @@
-package com.example.insta.view;
+package com.example.insta.view.login;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProvider;
 
 import android.os.Bundle;
-import android.view.Window;
 
 import com.example.insta.R;
 import com.example.insta.databinding.ActivityMainBinding;

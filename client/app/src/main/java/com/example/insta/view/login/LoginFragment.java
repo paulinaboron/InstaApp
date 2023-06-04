@@ -1,4 +1,4 @@
-package com.example.insta.view;
+package com.example.insta.view.login;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,9 +12,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
-import com.example.insta.R;
 import com.example.insta.databinding.FragmentLoginBinding;
 import com.example.insta.model.User;
+import com.example.insta.view.profile.ProfileActivity;
 import com.example.insta.viewModel.UserViewModel;
 
 import java.util.Objects;

@@ -1,4 +1,4 @@
-package com.example.insta.helpers;
+package com.example.insta.model;
 
 public class HistoryItem {
     private String status;

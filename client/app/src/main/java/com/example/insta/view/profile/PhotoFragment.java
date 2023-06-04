@@ -1,4 +1,4 @@
-package com.example.insta.view;
+package com.example.insta.view.profile;
 
 import android.os.Bundle;
 
@@ -11,8 +11,6 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.bumptech.glide.Glide;
-import com.example.insta.R;
-import com.example.insta.databinding.FragmentGalleryBinding;
 import com.example.insta.databinding.FragmentPhotoBinding;
 import com.example.insta.helpers.Utils;
 import com.example.insta.model.Photo;

@@ -7,8 +7,8 @@ import androidx.lifecycle.ViewModel;
 
 import com.example.insta.model.User;
 import com.example.insta.service.RetrofitService;
-import com.example.insta.view.LoginFragment;
-import com.example.insta.view.RegisterFragment;
+import com.example.insta.view.login.LoginFragment;
+import com.example.insta.view.login.RegisterFragment;
 
 import retrofit2.Call;
 import retrofit2.Callback;
