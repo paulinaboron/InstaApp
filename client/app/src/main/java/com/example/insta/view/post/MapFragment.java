@@ -119,8 +119,8 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
         }
         map.setMyLocationEnabled(true);
 
-        map.setMapType(GoogleMap.MAP_TYPE_HYBRID);
-        map.getUiSettings().setZoomControlsEnabled(true);
+        map.setMapType(GoogleMap.MAP_TYPE_NORMAL);
+        map.getUiSettings().setZoomControlsEnabled(false);
         map.getUiSettings().setCompassEnabled(true);
 
         map.setOnMapClickListener(latLng->{

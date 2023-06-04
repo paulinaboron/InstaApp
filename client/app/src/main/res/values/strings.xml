@@ -14,4 +14,6 @@
     <string name="aaa">Already have an account? Sing in</string>
     <string name="save">Save</string>
     <string name="red">red</string>
+    <string name="cancel">Cancel</string>
+    <string name="upload">Upload</string>
 </resources>
