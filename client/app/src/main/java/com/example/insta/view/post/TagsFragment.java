@@ -19,6 +19,7 @@ import com.example.insta.databinding.FragmentTagsBinding;
 import com.example.insta.model.Tag;
 import com.example.insta.viewModel.PostViewModel;
 import com.google.android.material.chip.Chip;
+import com.google.android.material.chip.ChipGroup;
 
 import java.util.List;
 
@@ -42,10 +43,19 @@ public class TagsFragment extends Fragment {
         postViewModel.getTags();
 
         binding.btnNext.setOnClickListener(v->{
-            Log.d(TAG, "onCreateView: " + binding.chipGroup.getCheckedChipIds());
-            for(int i : binding.chipGroup.getCheckedChipIds()){
-                postViewModel.selectedTags.add(postViewModel.tags.get(i-1));
+            ChipGroup chipGroup = binding.chipGroup;
+            for (int i=0; i<chipGroup.getChildCount();i++){
+                Chip chip = (Chip)chipGroup.getChildAt(i);
+                if (chip.isChecked()){
+                    Tag tag = new Tag((String) chip.getText());
+                    postViewModel.selectedTags.add(tag);
+                }
             }
+
+//            for(int i : binding.chipGroup.getCheckedChipIds()){
+//                Log.d(TAG, "chip id "+ i);
+//                postViewModel.selectedTags.add(postViewModel.tags.get(i-1));
+//            }
             Log.d(TAG, String.valueOf(postViewModel.selectedTags));
 
             AppCompatActivity activity = (AppCompatActivity) getActivity();

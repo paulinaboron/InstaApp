@@ -29,6 +29,8 @@ public class ProfileActivity extends AppCompatActivity {
         binding = ActivityProfileBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+        replaceFragment(new GalleryFragment());
+
         binding.bottomNavigation.setOnItemSelectedListener(v -> {
             switch (v.getItemId()) {
 

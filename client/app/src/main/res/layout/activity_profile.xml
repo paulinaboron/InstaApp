@@ -12,12 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="#e4e4e4"
-        tools:ignore="MissingConstraints">
-        <fragment
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:name="com.example.insta.view.profile.GalleryFragment"/>
-    </FrameLayout>
+        tools:ignore="MissingConstraints"/>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:layout_width="match_parent"
