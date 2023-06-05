@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.example.insta.databinding.FragmentLoginBinding;
+import com.example.insta.helpers.Utils;
 import com.example.insta.model.User;
 import com.example.insta.view.profile.ProfileActivity;
 import com.example.insta.viewModel.UserViewModel;
@@ -23,6 +24,7 @@ public class LoginFragment extends Fragment {
 
     private FragmentLoginBinding binding;
     private UserViewModel userViewModel;
+    private User user;
 
     private String TAG = "xxx";
 
@@ -43,7 +45,7 @@ public class LoginFragment extends Fragment {
     private void login(){
         String email = String.valueOf(binding.etEmail.getText());
         String pass = String.valueOf(binding.etPass.getText());
-        User user = new User(email, pass);
+        user = new User(email, pass);
 
         userViewModel.login(user, this);
     }
@@ -52,7 +54,8 @@ public class LoginFragment extends Fragment {
         if(Objects.equals(res, "błędne dane")) Toast.makeText(getContext(), res, Toast.LENGTH_SHORT).show();
         else{
             Intent intent = new Intent(getContext(), ProfileActivity.class);
-            intent.putExtra("token", res);
+            Utils.token = res;
+            Utils.album = user.getEmail();
             startActivity(intent);
         }
     }

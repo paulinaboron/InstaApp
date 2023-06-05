@@ -14,7 +14,6 @@ const router = async (req, res) => {
         output = jsonController.getAll()
 
     }else if(req.url.match(/\/api\/photos\/album\/(...)/) && req.method == "GET"){
-        console.log("EEEEEEEEEEEEEEEEEEEEEEEEEmail");
         let email = utils.getIdFromUrl(req)
         console.log(email);
         output = jsonController.getFromAlbum(email)
@@ -40,6 +39,12 @@ const router = async (req, res) => {
 
         let data = await utils.getRequestData(req);
         output = jsonController.updateTags(data)
+
+    }
+    else if (req.url == "/api/photos/address" && req.method == "PATCH") {
+
+        let data = await utils.getRequestData(req);
+        output = jsonController.updateAddress(data)
 
     } else if (req.url.match(/\/api\/photos\/tags\/([0-9]+)/) && req.method == "GET") {
 

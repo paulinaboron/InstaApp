@@ -4,7 +4,7 @@ module.exports = {
     add: (folder, name, path) => {
         let photo = new Photo(folder, name, path)
         photosArray.push(photo)
-        return "photo added " + photo.id
+        return photo.id
     },
     getAll: () => {
         return photosArray
@@ -47,7 +47,19 @@ module.exports = {
                 // const tagNames = photosArray[i].tags.map()
 
                 photosArray[i].addTags(obj.tags)
-                return photosArray[i]
+                return "tags added"
+            }
+        }
+        return "not found"
+    },
+    updateAddress: (data) =>{
+        let obj = JSON.parse(data)
+        console.log(obj);
+
+        for(let i=0; i<photosArray.length; i++){
+            if(photosArray[i].id == obj.id){
+                photosArray[i].addAddress(obj.address)
+                return "address added"
             }
         }
         return "not found"

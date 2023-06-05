@@ -12,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.signature.ObjectKey;
 import com.example.insta.R;
 import com.example.insta.model.Photo;
 import com.example.insta.view.profile.PhotoFragment;
@@ -62,7 +63,6 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder>{
 
     @Override
     public int getItemCount() {
-        Log.d(TAG, "getItemCount: " + photos.size());
         return photos.size();
     }
 
@@ -75,11 +75,9 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder>{
 
             image = itemView.findViewById(R.id.image);
             image.setScaleType(ImageView.ScaleType.CENTER_CROP);
-            int height = ThreadLocalRandom.current().nextInt(250, 600);
+            int height = ThreadLocalRandom.current().nextInt(350, 600);
             image.setLayoutParams(new FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, height));
-            
 
-            
         }
     }
 }

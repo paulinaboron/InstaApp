@@ -23,6 +23,14 @@ public class Photo {
         return id;
     }
 
+    public List<Tag> getTags() {
+        return tags;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
     @Override
     public String toString() {
         return "Photo{" +

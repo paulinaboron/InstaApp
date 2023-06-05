@@ -15,4 +15,8 @@
         android:id="@+id/itemCamera"
         android:icon="@android:drawable/ic_menu_camera"
         android:title="Camera" />
+    <item
+        android:id="@+id/itemLogout"
+        android:icon="@drawable/ic_baseline_logout_24"
+        android:title="Logout" />
 </menu>

@@ -13,5 +13,4 @@ content-type: application/json
 
 {   
   "name":"#nowytag",
-  "popularity": 1000000    
 }

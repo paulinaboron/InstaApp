@@ -19,7 +19,6 @@ public class GalleryFragment extends Fragment {
     private String TAG = "xxx";
     private FragmentGalleryBinding binding;
     private ProfileViewModel profileViewModel;
-    private String token;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -35,14 +34,8 @@ public class GalleryFragment extends Fragment {
         StaggeredGridLayoutManager manager = new StaggeredGridLayoutManager(2, LinearLayout.VERTICAL);
         binding.recyclerView.setLayoutManager(manager);
 
-
-        getParentFragmentManager()
-                .setFragmentResultListener("datafromactivity", this, (s, bundle) -> {
-                    token = bundle.getString("token");
-                    profileViewModel.setToken(token);
-                    profileViewModel.getProfile(token, binding.recyclerView);
+                    profileViewModel.getProfile(binding.recyclerView);
                     profileViewModel.getProfilePicture(binding.ivProfilePic);
-                });
 
         return binding.getRoot();
     }
@@ -52,7 +45,7 @@ public class GalleryFragment extends Fragment {
         super.onResume();
         Log.d(TAG, "onResume: ");
 
-        profileViewModel.getProfile(profileViewModel.getToken(), binding.recyclerView);
+        profileViewModel.getProfile(binding.recyclerView);
         profileViewModel.getProfilePicture(binding.ivProfilePic);
     }
 

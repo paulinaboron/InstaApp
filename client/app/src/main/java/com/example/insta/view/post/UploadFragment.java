@@ -49,7 +49,8 @@ public class UploadFragment extends Fragment {
         });
 
         binding.btnUpload.setOnClickListener(v->{
-            //todo
+            PostViewModel.uploadFragment = this;
+            postViewModel.uploadPhoto();
 
             goToProfileActivity();
         });
@@ -57,7 +58,7 @@ public class UploadFragment extends Fragment {
         return binding.getRoot();
     }
 
-    private void goToProfileActivity(){
+    public void goToProfileActivity(){
         Intent intent = new Intent(getContext(), ProfileActivity.class);
         startActivity(intent);
     }

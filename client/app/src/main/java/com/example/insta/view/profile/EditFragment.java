@@ -29,7 +29,6 @@ public class EditFragment extends Fragment {
     private String TAG = "xxx";
     private FragmentEditBinding binding;
     private ProfileViewModel profileViewModel;
-    private String token;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -41,7 +40,6 @@ public class EditFragment extends Fragment {
             binding.setProfile(profileViewModel);
         });
 
-        token = profileViewModel.getToken();
         profileViewModel.getProfilePicture(binding.profilePic);
 
         binding.btnSave.setOnClickListener(v -> {
@@ -76,9 +74,8 @@ public class EditFragment extends Fragment {
                 String picturePath = Utils.getPath( getActivity( ).getApplicationContext( ), selectedImageUri );
                 Log.d(TAG, "Picture Path " + picturePath);
                 File file = new File(picturePath);
-//                File file = new File(data.toURI());
-//                Log.d(TAG, "onActivityResult: " + file.getPath());
                 profileViewModel.postProfilePic(file, getContext());
+
                 try {
                     Bitmap bitmap = MediaStore.Images.Media.getBitmap(getActivity().getContentResolver(), selectedImageUri);
                     binding.profilePic.setImageBitmap(bitmap);

@@ -14,6 +14,7 @@ import android.widget.Toast;
 import com.example.insta.R;
 import com.example.insta.databinding.ActivityProfileBinding;
 import com.example.insta.helpers.Utils;
+import com.example.insta.view.login.MainActivity;
 import com.example.insta.view.post.PostActivity;
 
 public class ProfileActivity extends AppCompatActivity {
@@ -28,9 +29,6 @@ public class ProfileActivity extends AppCompatActivity {
         binding = ActivityProfileBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        Bundle bundle = getIntent().getExtras();
-        getSupportFragmentManager().setFragmentResult("datafromactivity", bundle);
-
         binding.bottomNavigation.setOnItemSelectedListener(v -> {
             switch (v.getItemId()) {
 
@@ -39,9 +37,15 @@ public class ProfileActivity extends AppCompatActivity {
                     break;
                 case R.id.itemProfile:
                     replaceFragment(new GalleryFragment());
+                    break;
                 case R.id.itemCamera:
                     Intent intent = new Intent(ProfileActivity.this, PostActivity.class);
                     startActivity(intent);
+                    break;
+                case R.id.itemLogout:
+                    Intent intentLogout = new Intent(ProfileActivity.this, MainActivity.class);
+                    startActivity(intentLogout);
+                    break;
             }
             return true;
         });

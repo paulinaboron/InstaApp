@@ -10,6 +10,7 @@ class Photo{
         this.lastChange = "original"
         this.history = [new History("original", this.id, this.url)]
         this.tags = []
+        this.address = ""
     }
 
     addStatus(status){
@@ -22,6 +23,10 @@ class Photo{
             let newTag = new Tag(e.name, e.popularity)
             this.tags.push(newTag)
         });
+    }
+
+    addAddress(address){
+        this.address = address;
     }
 
     getNewPath(extra){

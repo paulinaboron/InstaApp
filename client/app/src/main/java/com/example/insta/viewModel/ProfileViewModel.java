@@ -49,11 +49,7 @@ public class ProfileViewModel extends ViewModel {
         return photosLiveData;
     }
 
-    private String token;
-
-    public void setToken(String token) {
-        this.token = token;
-    }
+    private final String token = Utils.token;
 
     public String getToken() {
         return token;
@@ -64,7 +60,7 @@ public class ProfileViewModel extends ViewModel {
         this.photosLiveData.setValue(this.photos);
     }
 
-    public void getProfile(String token, RecyclerView recyclerView){
+    public void getProfile(RecyclerView recyclerView){
         Log.d(TAG, "getProfile: token " + token);
         Call<User> call = RetrofitService.getProfileInterface().getProfile("Bearer " + token);
         call.enqueue(new Callback<User>() {
