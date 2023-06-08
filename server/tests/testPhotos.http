@@ -17,7 +17,7 @@ GET http://localhost:3000/api/photos/album/Email HTTP/1.1
 
 
 ### GET - pobierz jeden element wg id
-GET http://localhost:3000/api/photos/1685946515780 HTTP/1.1
+GET http://localhost:3000/api/photos/1686225359787 HTTP/1.1
 
 
 ### PATCH - updatuj wg id
@@ -39,6 +39,23 @@ Content-Disposition: form-data; name="file"; filename="paint.jpg"
 Content-Type: image/jpeg
 
 < ./paint.jpg
+
+------FormBoundary1234
+Content-Disposition: form-data; name="album"
+Content-Type: text/plain
+
+Email
+------FormBoundary1234
+
+### POST - plik
+POST http://localhost:3000/api/photos HTTP/1.1
+Content-Type: multipart/form-data; boundary=----FormBoundary1234
+
+------FormBoundary1234
+Content-Disposition: form-data; name="file"; filename="vid.mp4"
+Content-Type: video/mp4
+
+< ./vid.mp4
 
 ------FormBoundary1234
 Content-Disposition: form-data; name="album"
@@ -81,7 +98,10 @@ content-type: application/json
 GET http://localhost:3000/api/photos/tags/1683708174016 HTTP/1.1
 
 ### GET photo file
-GET http://localhost:3000/api/photos/getfile/1685015290911 HTTP/1.1
+GET http://localhost:3000/api/photos/getFile/1686231062394 HTTP/1.1
+
+### GET video file
+GET http://localhost:3000/api/photos/getVideo/1686231289987 HTTP/1.1
 
 ### GET photo file from url
 GET http://localhost:3000/api/photos/getfileURL/uploads/Email/upload_01d8fc45610db498920f5121201dd20d.jpg HTTP/1.1

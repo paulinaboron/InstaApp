@@ -52,13 +52,22 @@ const router = async (req, res) => {
 
     }
 
-    else if (req.url.match(/\/api\/photos\/getfile\/([0-9]+)/) && req.method == "GET") {
+    else if (req.url.match(/\/api\/photos\/getFile\/([0-9]+)/) && req.method == "GET") {
 
         let id = utils.getIdFromUrl(req)
         var img = await fileController.getFile(id)
         res.writeHead(200, { "Content-Type": "image/jpeg" });
 
         res.end(img)
+        return;
+    }
+    else if (req.url.match(/\/api\/photos\/getVideo\/([0-9]+)/) && req.method == "GET") {
+
+        let id = utils.getIdFromUrl(req)
+        var video = await fileController.getFile(id)
+        res.writeHead(200, { "Content-Type": "video/mp4" });
+
+        res.end(video)
         return;
     }
     else if (req.url.match(/\/api\/photos\/getfileURL\/(...)/) && req.method == "GET") {

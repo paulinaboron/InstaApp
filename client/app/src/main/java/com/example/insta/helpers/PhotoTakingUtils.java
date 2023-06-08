@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Environment;
 import android.provider.MediaStore;
 import android.util.Log;
@@ -77,6 +78,15 @@ public class PhotoTakingUtils {
                     @Override
                     public void onVideoSaved(@NonNull VideoCapture.OutputFileResults outputFileResults) {
                         Toast.makeText(context, "Video saved", Toast.LENGTH_SHORT).show();
+
+                        Uri uri = outputFileResults.getSavedUri();
+                        File file = new File(Utils.getPath(context, uri));
+                        Log.d(TAG, "onVideoSaved file: " + file.getPath());
+
+                        AppCompatActivity activity = (AppCompatActivity) context;
+                        PostViewModel.photoFile = file;
+                        activity.getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout, new TagsFragment()).addToBackStack(null).commit();
+
                     }
 
                     @Override

@@ -45,8 +45,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder>{
         Photo photo = photos.get(position);
 
         Glide.with(holder.image.getContext())
-                .load(Utils.adres+"/api/photos/getfile/" + photo.getId())
-//                .signature(new ObjectKey(String.valueOf(System.currentTimeMillis())))
+                .load(Utils.adres+"/api/photos/getFile/" + photo.getId())
                 .into(holder.image);
 
         Log.d(TAG, "onBindViewHolder: glide");

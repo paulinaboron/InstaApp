@@ -30,11 +30,18 @@
             android:layout_marginTop="30dp"
             android:layout_marginBottom="30dp">
 
+            <VideoView
+                android:layout_width="match_parent"
+                android:layout_height="400dp"
+                android:id="@+id/vvSelectedVideo"/>
+            
             <ImageView
                 android:id="@+id/ivSelectedPhoto"
                 android:layout_width="match_parent"
                 android:layout_height="400dp"
                 android:scaleType="centerCrop" />
+
+
 
         </androidx.cardview.widget.CardView>
 
