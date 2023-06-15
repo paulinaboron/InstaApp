@@ -54,7 +54,7 @@ public class PostViewModel extends ViewModel {
 
             @Override
             public void onFailure(Call<List<Tag>> call, Throwable t) {
-                Log.d(TAG, "onFailure: " + t.getMessage());
+                Log.d(TAG, "onFailure 1: " + t.getMessage());
             }
         });
     }
@@ -81,7 +81,7 @@ public class PostViewModel extends ViewModel {
 
             @Override
             public void onFailure(Call<String> call, Throwable t) {
-                Log.d(TAG, "onFailure: " + t.getMessage());
+                Log.d(TAG, "onFailure 2: " + t.getMessage());
             }
         });
 
@@ -99,7 +99,7 @@ public class PostViewModel extends ViewModel {
 
             @Override
             public void onFailure(Call<String> call, Throwable t) {
-                Log.d(TAG, "onFailure: " + t.getMessage());
+                Log.d(TAG, "onFailure 3: " + t.getMessage());
             }
         });
     }
@@ -116,7 +116,7 @@ public class PostViewModel extends ViewModel {
 
             @Override
             public void onFailure(Call<String> call, Throwable t) {
-                Log.d(TAG, "onFailure: " + t.getMessage());
+                Log.d(TAG, "onFailure 4: " + t.getMessage());
             }
         });
 

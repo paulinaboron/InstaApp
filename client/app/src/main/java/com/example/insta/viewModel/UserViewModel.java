@@ -37,7 +37,7 @@ public class UserViewModel extends ViewModel {
 
             @Override
             public void onFailure(Call<String> call, Throwable t) {
-                Log.d(TAG, "onFailure: error " + t.getMessage());
+                Log.d(TAG, "onFailure 9: error " + t.getMessage());
             }
         });
     }
@@ -60,7 +60,7 @@ public class UserViewModel extends ViewModel {
 
             @Override
             public void onFailure(Call<String> call, Throwable t) {
-                Log.d(TAG, "onFailure: " + t.getMessage());
+                Log.d(TAG, "onFailure 10: " + t.getMessage());
             }
         });
     }
@@ -83,7 +83,7 @@ public class UserViewModel extends ViewModel {
 
             @Override
             public void onFailure(Call<String> call, Throwable t) {
-                Log.d(TAG, "onFailure: " + t.getMessage());
+                Log.d(TAG, "onFailure 11: " + t.getMessage());
             }
         });
     }

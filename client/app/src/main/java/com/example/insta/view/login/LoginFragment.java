@@ -53,9 +53,9 @@ public class LoginFragment extends Fragment {
     public void loginResponce(String res){
         if(Objects.equals(res, "błędne dane")) Toast.makeText(getContext(), res, Toast.LENGTH_SHORT).show();
         else{
-            Intent intent = new Intent(getContext(), ProfileActivity.class);
             Utils.token = res;
             Utils.album = user.getEmail();
+            Intent intent = new Intent(getContext(), ProfileActivity.class);
             startActivity(intent);
         }
     }

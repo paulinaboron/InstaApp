@@ -10,7 +10,7 @@ module.exports = {
         return photosArray
     },
     getFromAlbum: (album)=>{
-        console.log(album);
+        console.log("AAAAAAAAAAAAAAAAA", album);
         let photos = photosArray.filter(function(e) {
             return e.album = album
         })

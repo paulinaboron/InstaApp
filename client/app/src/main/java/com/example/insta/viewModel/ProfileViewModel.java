@@ -81,7 +81,7 @@ public class ProfileViewModel extends ViewModel {
 
             @Override
             public void onFailure(Call<User> call, Throwable t) {
-                Log.d(TAG, "onFailure: " + t.getMessage());
+                Log.d(TAG, "onFailure 5: " + t.getMessage());
             }
         });
 
@@ -110,7 +110,7 @@ public class ProfileViewModel extends ViewModel {
 
             @Override
             public void onFailure(Call<List<Photo>> call, Throwable t) {
-                Log.d(TAG, "onFailure: " + t.getMessage());
+                Log.d(TAG, "onFailure 6: " + t.getMessage());
             }
         });
     }
@@ -150,7 +150,7 @@ public class ProfileViewModel extends ViewModel {
 
             @Override
             public void onFailure(Call<String> call, Throwable t) {
-                Log.d(TAG, "onFailure: " + t.getMessage());
+                Log.d(TAG, "onFailure 7: " + t.getMessage());
             }
         });
     }
@@ -176,7 +176,7 @@ public class ProfileViewModel extends ViewModel {
 
             @Override
             public void onFailure(Call<String> call, Throwable t) {
-                Log.d(TAG, "onFailure: " + t.getMessage());
+                Log.d(TAG, "onFailure 8: " + t.getMessage());
             }
         });
     }

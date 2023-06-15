@@ -39,14 +39,21 @@ module.exports = {
 
     getProfilePicture: async (email) => {
         const path = __dirname + "/../../profilePics/" + email + ".jpg";
+        const defaultPath = __dirname + "/../../profilePics/undefined.jpg";
         console.log(path);
         return new Promise(
             (resolve, reject) => {
                 fs.readFile(path, (err, data) => {
-                    if (err) reject(err)
-                    resolve(data)
+                    if (err) {
+                        console.log(err);
+                        fs.readFile(defaultPath, (err, data) => {
+                            resolve(data)
+                        })
+                    }else{
+                        resolve(data)
+                    }
                 })
             }
         )
     }
-}
+} 

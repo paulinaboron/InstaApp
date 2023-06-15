@@ -30,7 +30,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6IkVtYWlsI
 
 
 ### GET - pobierz pliki z albumu
-GET http://localhost:3000/api/profile/album/Email HTTP/1.1
+GET http://localhost:3000/api/profile/album/x HTTP/1.1
 
 
 ### GET logout

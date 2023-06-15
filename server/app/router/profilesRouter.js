@@ -7,11 +7,11 @@ let tokenBlacklist = []
 const profilesRouter = async (req, res) => {
 
     let output = "not found"
+    console.log(req.url);
 
     if (req.url == "/api/profile" && req.method == "GET") {
         if (req.headers.authorization && req.headers.authorization.startsWith("Bearer")) {
             let token = req.headers.authorization.split(" ")[1]
-            console.log(token)
 
             let decoded = await utils.verifyToken(token)
             if (decoded.email) {
@@ -22,7 +22,6 @@ const profilesRouter = async (req, res) => {
     else if (req.url == "/api/profile" && req.method == "PATCH") {
         if (req.headers.authorization && req.headers.authorization.startsWith("Bearer")) {
             let token = req.headers.authorization.split(" ")[1]
-            console.log(token)
 
             let data = await utils.getRequestData(req);
             console.log(data);
@@ -38,7 +37,6 @@ const profilesRouter = async (req, res) => {
     else if (req.url == "/api/profile" && req.method == "POST") {
         if (req.headers.authorization && req.headers.authorization.startsWith("Bearer")) {
             let token = req.headers.authorization.split(" ")[1]
-            console.log(token)
 
             let decoded = await utils.verifyToken(token)
             output = await profilesController.uploadProfilePicture(req, decoded.email)
@@ -47,7 +45,6 @@ const profilesRouter = async (req, res) => {
     else if (req.url == "/api/profile/picture" && req.method == "GET") {
         if (req.headers.authorization && req.headers.authorization.startsWith("Bearer")) {
             let token = req.headers.authorization.split(" ")[1]
-            console.log(token)
 
             let decoded = await utils.verifyToken(token)
             var img = await profilesController.getProfilePicture(decoded.email)
@@ -56,7 +53,8 @@ const profilesRouter = async (req, res) => {
             return;
         }
     }
-    else if(req.url.match(/\/api\/profile\/album\/(...)/) && req.method == "GET"){
+    else if(req.url.match(/\/api\/profile\/album\/([a-zA-Z])/) && req.method == "GET"){
+        console.log("ALBUMMMMM");
         let email = utils.getIdFromUrl(req)
         output = jsonController.getFromAlbum(email)
 
